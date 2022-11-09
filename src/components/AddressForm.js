@@ -1,71 +1,90 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import * as React from "react";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Checkbox from "@mui/material/Checkbox";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  styled,
+} from "@mui/material";
 
-export default function AddressForm() {
-  const [collage, setCollage] = React.useState('건축대학');
-  const [department, setDepartment] = React.useState('');
-
+export default function AddressForm(props) {
   const handleChangeCollage = (event) => {
-    setCollage(event.target.value);
+    props.setCollage(event.target.value);
   };
 
+  const FormHelperTexts = styled(FormHelperText)`
+    width: 100%;
+    padding-left: 16px;
+    font-weight: 700 !important;
+    color: #d32f2f !important;
+  `;
+
   const handleChangeDepartment = (event) => {
-    setCollage(event.target.value);
+    props.setDepartment(event.target.value);
   };
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom textAlign="center">
         개인정보 입력
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+      <Grid container spacing={2}>
+        {/* 이름 입력 폼 */}
+        <Grid item xs={6}>
           <TextField
-            required
             id="Name"
             name="Name"
             label="이름"
+            value={props.name}
+            onChange={(event) => props.setName(event.target.value)}
             fullWidth
             autoComplete="name"
             variant="standard"
+            error={props.nameError !== "" || false}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <FormHelperTexts>{props.nameError}</FormHelperTexts>
+        {/* 학번 입력 폼 */}
+        <Grid item xs={6}>
           <TextField
-            required
             id="stdId"
             name="stdId"
             label="학번"
+            value={props.stdId}
+            onChange={(event) => props.setStdId(event.target.value)}
             fullWidth
             variant="standard"
+            error={props.stdIdError !== "" || false}
           />
         </Grid>
+        <FormHelperTexts>{props.stdIdError}</FormHelperTexts>
         <Grid item xs={12}>
           <FormControl fullWidth>
             <InputLabel id="collage-select-label">단과대학</InputLabel>
             <Select
               labelId="collage-select-label"
               id="collage-select"
-              value={collage}
+              value={props.collage}
               label="단과대학"
               onChange={handleChangeCollage}
             >
-              <MenuItem value={'건축대학'}>건축대학</MenuItem>
-              <MenuItem value={'경영대학'}>경영대학</MenuItem>
-              <MenuItem value={'공과대학'}>공과대학</MenuItem>
-              <MenuItem value={'미래융합대학교'}>미래융합대학교</MenuItem>
-              <MenuItem value={'법과대학'}>법과대학</MenuItem>
-              <MenuItem value={'사회과학대학'}>사회과학대학</MenuItem>
-              <MenuItem value={'예술체육대학'}>예술체육대학</MenuItem>
-              <MenuItem value={'인문대학'}>인문대학</MenuItem>
-              <MenuItem value={'자연과학대학'}>자연과학대학</MenuItem>
-              <MenuItem value={'ICT융합대학'}>ICT융합대학</MenuItem>
-              <MenuItem value={'단과대구분없음'}>단과대구분없음</MenuItem>
+              <MenuItem value={"건축대학"}>건축대학</MenuItem>
+              <MenuItem value={"경영대학"}>경영대학</MenuItem>
+              <MenuItem value={"공과대학"}>공과대학</MenuItem>
+              <MenuItem value={"미래융합대학교"}>미래융합대학교</MenuItem>
+              <MenuItem value={"법과대학"}>법과대학</MenuItem>
+              <MenuItem value={"사회과학대학"}>사회과학대학</MenuItem>
+              <MenuItem value={"예술체육대학"}>예술체육대학</MenuItem>
+              <MenuItem value={"인문대학"}>인문대학</MenuItem>
+              <MenuItem value={"자연과학대학"}>자연과학대학</MenuItem>
+              <MenuItem value={"ICT융합대학"}>ICT융합대학</MenuItem>
+              <MenuItem value={"단과대구분없음"}>단과대구분없음</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -75,21 +94,21 @@ export default function AddressForm() {
             <Select
               labelId="department-select-label"
               id="department-select"
-              value={department}
+              value={props.Griddepartment}
               label="학과"
               onChange={handleChangeDepartment}
             >
-              <MenuItem value={'건축대학'}>건축대학</MenuItem>
-              <MenuItem value={'경영대학'}>경영대학</MenuItem>
-              <MenuItem value={'공과대학'}>공과대학</MenuItem>
-              <MenuItem value={'미래융합대학교'}>미래융합대학교</MenuItem>
-              <MenuItem value={'법과대학'}>법과대학</MenuItem>
-              <MenuItem value={'사회과학대학'}>사회과학대학</MenuItem>
-              <MenuItem value={'예술체육대학'}>예술체육대학</MenuItem>
-              <MenuItem value={'인문대학'}>인문대학</MenuItem>
-              <MenuItem value={'자연과학대학'}>자연과학대학</MenuItem>
-              <MenuItem value={'ICT융합대학'}>ICT융합대학</MenuItem>
-              <MenuItem value={'단과대구분없음'}>단과대구분없음</MenuItem>
+              <MenuItem value={"건축대학"}>건축대학</MenuItem>
+              <MenuItem value={"경영대학"}>경영대학</MenuItem>
+              <MenuItem value={"공과대학"}>공과대학</MenuItem>
+              <MenuItem value={"미래융합대학교"}>미래융합대학교</MenuItem>
+              <MenuItem value={"법과대학"}>법과대학</MenuItem>
+              <MenuItem value={"사회과학대학"}>사회과학대학</MenuItem>
+              <MenuItem value={"예술체육대학"}>예술체육대학</MenuItem>
+              <MenuItem value={"인문대학"}>인문대학</MenuItem>
+              <MenuItem value={"자연과학대학"}>자연과학대학</MenuItem>
+              <MenuItem value={"ICT융합대학"}>ICT융합대학</MenuItem>
+              <MenuItem value={"단과대구분없음"}>단과대구분없음</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -97,9 +116,13 @@ export default function AddressForm() {
         <Grid item xs={12}>
           <FormControlLabel
             control={
-              <Checkbox color="secondary" name="saveAddress" value="yes" />
+              <Checkbox
+                onChange={(event) => props.setChecked(event.target.checked)}
+                name="checkbox"
+                checked={props.checked}
+              />
             }
-            label="개인정보 활용동의"
+            label="이용약관 및 개인정보 처리방침에 동의합니다."
           />
         </Grid>
       </Grid>
