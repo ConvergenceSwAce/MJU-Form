@@ -18,7 +18,7 @@ export default function BackgroundVideo() {
           zIndex: -1,
         }}
       >
-        {/* <source src="/videos/Bg.mp4" type="video/mp4" /> */}
+        {/* <source src="/videos/Bg.mp4" tpye="video/mp4" /> */}
       </video>
     </div>
   );
