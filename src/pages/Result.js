@@ -48,7 +48,7 @@ export default function Result() {
                 elevation={1}
                 sx={{ justifyContent: 'center', display: 'flex' }}
               >
-                <Logo width={'50vw'} />
+                <Logo width={'50vw'}  />
               </Paper>
             </Grid>
 
