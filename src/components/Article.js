@@ -7,13 +7,13 @@ import Typography from '@mui/material/Typography';
 const images = [
   {
     url: '/images/court.jpg',
-    title: 'Basketball Court',
+    title: '설문하러가기',
     width: '35%',
-    redirect: '/reservation/court',
+    redirect: '/survey',
   },
   {
     url: '/images/field.jpg',
-    title: 'Soccer Field',
+    title: '설문결과',
     width: '35%',
     redirect: '/reservation/field',
   },
