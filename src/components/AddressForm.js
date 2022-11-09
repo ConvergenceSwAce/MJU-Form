@@ -20,7 +20,6 @@ export default function AddressForm(props) {
 
   const FormHelperTexts = styled(FormHelperText)`
     width: 100%;
-    padding-left: 16px;
     font-weight: 700 !important;
     color: #d32f2f !important;
   `;
@@ -36,7 +35,7 @@ export default function AddressForm(props) {
       </Typography>
       <Grid container spacing={2}>
         {/* 이름 입력 폼 */}
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             id="Name"
             name="Name"
@@ -48,10 +47,10 @@ export default function AddressForm(props) {
             variant="standard"
             error={props.nameError !== "" || false}
           />
+          <FormHelperTexts>{props.nameError}</FormHelperTexts>
         </Grid>
-        <FormHelperTexts>{props.nameError}</FormHelperTexts>
         {/* 학번 입력 폼 */}
-        <Grid item xs={6}>
+        <Grid item xs={6} md={6}>
           <TextField
             id="stdId"
             name="stdId"
@@ -62,8 +61,8 @@ export default function AddressForm(props) {
             variant="standard"
             error={props.stdIdError !== "" || false}
           />
+          <FormHelperTexts>{props.stdIdError}</FormHelperTexts>
         </Grid>
-        <FormHelperTexts>{props.stdIdError}</FormHelperTexts>
         <Grid item xs={12}>
           <FormControl fullWidth>
             <InputLabel id="collage-select-label">단과대학</InputLabel>
@@ -73,6 +72,7 @@ export default function AddressForm(props) {
               value={props.collage}
               label="단과대학"
               onChange={handleChangeCollage}
+              error={props.collageError !== "" || false}
             >
               <MenuItem value={"건축대학"}>건축대학</MenuItem>
               <MenuItem value={"경영대학"}>경영대학</MenuItem>
@@ -90,13 +90,14 @@ export default function AddressForm(props) {
         </Grid>
         <Grid item xs={12}>
           <FormControl fullWidth>
-            <InputLabel id="department-select-label">학과(학부)</InputLabel>
+            <InputLabel id="department-select-label">학과・학부</InputLabel>
             <Select
               labelId="department-select-label"
               id="department-select"
-              value={props.Griddepartment}
-              label="학과"
+              value={props.department}
+              label="학과・학부"
               onChange={handleChangeDepartment}
+              error={props.departmentError !== "" || false}
             >
               <MenuItem value={"건축대학"}>건축대학</MenuItem>
               <MenuItem value={"경영대학"}>경영대학</MenuItem>
