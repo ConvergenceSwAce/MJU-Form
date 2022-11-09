@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const steps = ["개인정보 동의", "예약정보 작성", "예약 완료"];
+const steps = ["개인정보 동의", "의견 작성", "의견 확인"];
 
 const theme = createTheme({
   palette: {
@@ -42,26 +42,23 @@ const theme = createTheme({
 
 export default function Checkout() {
   async function onhandlePost(data) {
-    const { startValue, endValue, area, headCount, name, phone, password } =
-      data;
+    const { name, stdId, collage, department, content } = data;
     const postData = {
       name,
-      phone,
-      password,
-      headcount: headCount,
-      court: area,
-      startDate: startValue,
-      endDate: endValue,
+      stdId,
+      collage,
+      department,
+      content,
     };
 
     console.log(postData);
 
     await axios
-      .post("http://localhost:7000/reservation", postData)
+      .post("http://localhost:7000/sumbit", postData)
       .then((res) => {
         Swal.fire({
           icon: "success",
-          title: "예약 성공",
+          title: "제출 성공",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -72,7 +69,7 @@ export default function Checkout() {
         Swal.fire({
           icon: "error",
           iconColor: "#d32f2f",
-          title: "예약 실패",
+          title: "제출 실패",
           text: "다시 시도해주세요",
           confirmButtonColor: "#005cb8",
         });
@@ -94,15 +91,20 @@ export default function Checkout() {
 
   // 버튼 상태
 
-  // 예약 정보
+  // 학생 정보
   const [collage, setCollage] = useState("");
   const [department, setDepartment] = useState("");
   const [name, setName] = useState("");
   const [stdId, setStdId] = useState("");
 
+  // 의견 내용
+  const [content, setContent] = useState("");
+
   // 유효성 검사
   const [nameError, setNameError] = useState("");
   const [stdIdError, setStdIdError] = useState("");
+  const [collageError, setCollageError] = useState("");
+  const [departmentError, setDepartmentError] = useState("");
 
   const buttonValue = activeStep === steps.length - 1 ? "제출하기" : "다음";
 
@@ -128,13 +130,25 @@ export default function Checkout() {
             stdIdError={stdIdError}
             setStdIdError={setStdIdError}
             setChecked={setChecked}
+            collageError={collageError}
+            setCollageError={setCollageError}
+            departmentError={departmentError}
+            setDepartmentError={setDepartmentError}
             checked={checked}
           />
         );
       case 1:
-        return <SubmitForm />;
+        return <SubmitForm content={content} setContent={setContent} />;
       case 2:
-        return <Result />;
+        return (
+          <Result
+            name={name}
+            collage={collage}
+            department={department}
+            stdId={stdId}
+            content={content}
+          />
+        );
       default:
         throw new Error("Unknown step");
     }
@@ -166,29 +180,36 @@ export default function Checkout() {
       const stdIdRegex = /^[0-9]{8}$/;
       if (!stdIdRegex.test(stdId)) setStdIdError("올바른 학번을 입력해주세요.");
       else setStdIdError("");
+
+      if (collage === "") setCollageError("학과를 선택해주세요.");
+      else setCollageError("");
+
+      if (department === "") setDepartmentError("학과를 선택해주세요.");
+      else setDepartmentError("");
+
       // 유효성 체크 후 통과시 다음으로 넘어가기
-      if (nameRegex.test(name) && stdIdRegex.test(stdId) && checked) {
+      if (
+        nameRegex.test(name) &&
+        stdIdRegex.test(stdId) &&
+        collage !== "" &&
+        department !== "" &&
+        checked
+      ) {
         handleNext();
       } else {
       }
     }
 
     if (activeStep === 1) {
-      // 이름 유효성 체크
-      const nameRegex = /^[가-힣a-zA-Z]+$/;
-      if (!nameRegex.test(name) || name.length < 1)
-        setNameError("올바른 이름을 입력해주세요.");
-      else setNameError("");
-
-      // 학번 유효성 체크
-      const stdIdRegex = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
-      if (!stdIdRegex.test(stdId)) setStdIdError("올바른 학번 입력해주세요.");
-      else setStdIdError("");
-
-      // 유효성 체크 후 통과시 다음으로 넘어가기
-      if (nameRegex.test(name) && stdIdRegex.test(stdId) && checked) {
-        handleNext();
+      if (content === "") {
+        Swal.fire({
+          icon: "error",
+          iconColor: "#d32f2f",
+          title: "의견을 입력해주세요.",
+          confirmButtonColor: "#005cb8",
+        });
       } else {
+        handleNext();
       }
     }
 
@@ -207,7 +228,7 @@ export default function Checkout() {
       <Container component="main" maxWidth="md">
         <Paper variant="outlined" sx={{ p: { xs: 2, md: 5 } }}>
           <Typography variant="h4" align="center">
-            개인정보 동의
+            명지의 등불밝히기
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 3 }}>
             {steps.map((label) => (
