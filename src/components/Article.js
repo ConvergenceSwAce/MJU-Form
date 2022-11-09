@@ -15,7 +15,7 @@ const images = [
     url: '/images/field.jpg',
     title: '설문결과',
     width: '35%',
-    redirect: '/reservation/field',
+    redirect: '/result',
   },
 ];
 
