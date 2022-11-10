@@ -92,8 +92,19 @@ const collageOfMajors = {
   ],
 };
 export default function AddressForm(props) {
+  const [getCollage, setCollage] = React.useState([]);
+  const [getMajors, setMajors] = React.useState([]);
+
+  React.useEffect(() => {
+    console.log(collageOfMajors[getCollage]);
+    let majors = collageOfMajors[getCollage];
+    setMajors(majors);
+    console.log(getMajors);
+  }, [getCollage]);
+
   const handleChangeCollage = (event) => {
     props.setCollage(event.target.value);
+    setCollage(event.target.value);
   };
 
   const FormHelperTexts = styled(FormHelperText)`
@@ -113,7 +124,7 @@ export default function AddressForm(props) {
       </Typography>
       <Grid container spacing={2}>
         {/* 이름 입력 폼 */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6} md={6}>
           <TextField
             id="Name"
             name="Name"
@@ -177,11 +188,14 @@ export default function AddressForm(props) {
               onChange={handleChangeDepartment}
               error={props.departmentError !== '' || false}
             >
-              <MenuItem value={'건축대학'}>건축대학</MenuItem>
-              <MenuItem value={'경영대학'}>경영대학</MenuItem>
-              <MenuItem value={'공과대학'}>공과대학</MenuItem>
-              <MenuItem value={'미래융합대학교'}>미래융합대학교</MenuItem>
-              <MenuItem value={'법과대학'}>법과대학</MenuItem>
+              {console.log('test: ', getMajors)}
+              {getMajors.map((item, index) => {
+                return (
+                  <MenuItem key={index} value={item}>
+                    {item}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         </Grid>
