@@ -53,7 +53,7 @@ const dummy = [
   },
 ];
 
-export default function Result() {
+export default function Result(props) {
   const [alignment, setAlignment] = React.useState("latest");
   const [sortedData, setSortedData] = React.useState([]);
 
@@ -136,11 +136,27 @@ export default function Result() {
                 >
                   "그대는 명지明知를 밝히는 등불이어라"
                 </Typography>
-                <Typography color="black" sx={{ mt: 2 }} variant="subtitle1">
-                  참여 비율
-                </Typography>
-
-                <LinearProgressWithLabel value={50} />
+                <Grid container spacing={2} alignItems="center">
+                  <Grid item xs={2}>
+                    <Typography
+                      color="white"
+                      variant="subtitle1"
+                      bgcolor="secondary.main"
+                      borderRadius={30}
+                    >
+                      전체 참여율
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <LinearProgressWithLabel
+                      sx={{
+                        height: 10,
+                        borderRadius: 20,
+                      }}
+                      value={38}
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
               <Grid item xs={12}>
                 <ToggleButtonGroup
