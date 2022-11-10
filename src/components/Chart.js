@@ -53,14 +53,54 @@ export const data = {
   labels,
   datasets: [
     {
-      label: '단과대학',
+      label: '건축대학',
       data: [10],
       backgroundColor: 'rgba(53, 162, 235)',
     },
     {
-      label: '2',
+      label: '경영대학',
       data: [15],
       backgroundColor: 'rgba(53, 162, 23)',
+    },
+    {
+      label: '공과대학',
+      data: [7],
+      backgroundColor: 'rgba(59, 12, 23)',
+    },
+    {
+      label: '미래융합대학',
+      data: [18],
+      backgroundColor: 'rgba(3, 162, 123)',
+    },
+    {
+      label: '사회과학대학',
+      data: [25],
+      backgroundColor: 'rgba(253, 162, 23)',
+    },
+    {
+      label: '예술체육대학',
+      data: [9],
+      backgroundColor: 'rgba(53, 12, 223)',
+    },
+    {
+      label: '인문대학',
+      data: [17],
+      backgroundColor: 'rgba(123, 252, 23)',
+    },
+    {
+      label: '자연과학대학',
+      data: [20],
+      backgroundColor: 'rgba(231, 12, 23)',
+    },
+    {
+      label: 'ICT융합대학',
+      data: [40],
+      backgroundColor: 'rgba(53, 162, 23)',
+    },
+    {
+      label: '단과대구분없음',
+      data: [12],
+      backgroundColor: 'rgba(193, 182, 23)',
     },
   ],
 };
