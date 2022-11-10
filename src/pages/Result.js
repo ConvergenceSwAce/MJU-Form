@@ -10,8 +10,8 @@ import {
 import React from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import Header from "../components/Header";
-import Wave from "react-wavify";
 import Background from "../components/Background";
+import LinearProgressWithLabel from "../components/ProgressBar";
 
 export default function Result() {
   const [alignment, setAlignment] = React.useState("web");
@@ -51,38 +51,10 @@ export default function Result() {
               p: 10,
             }}
           >
-            <Grid container>
+            <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Wave
-                  fill="url(#gradient)"
-                  sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    zIndex: 0,
-                  }}
-                  height={100}
-                >
-                  <Logo
-                    sx={{
-                      width: "100vw",
-                      height: "100vh",
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      zIndex: -1,
-                    }}
-                  />
-                  <defs>
-                    <linearGradient
-                      id="gradient"
-                      gradientTransform="rotate(90)"
-                    >
-                      <stop offset="10%" stopColor="#071648" />
-                      <stop offset="90%" stopColor="#0086D1" />
-                    </linearGradient>
-                  </defs>
-                </Wave>
+                <Logo height={100} />
+                <LinearProgressWithLabel value={50} />
               </Grid>
               <Grid item xs={12}>
                 <ToggleButtonGroup
