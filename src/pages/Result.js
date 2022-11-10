@@ -73,7 +73,8 @@ export default function Result(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:7001/survey/${alignment}`)
+      .get(`http://localhost:7001/survey`, { params: { orderby: alignment }}, 
+      { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         setSortedData(res.data);
@@ -173,12 +174,12 @@ export default function Result(props) {
                   aria-label="Platform"
                 >
                   <ToggleButton value="latest">최신순</ToggleButton>
-                  <ToggleButton value="heart">공감순</ToggleButton>
                   <ToggleButton value="oldest">오래된순</ToggleButton>
+                  <ToggleButton value="vote">공감순</ToggleButton>
                 </ToggleButtonGroup>
               </Grid>
               <Stack spacing={4}>
-                {dummy.map((data) => {
+                {sortedData.map((data) => {
                   return (
                     <>
                       <Item>
