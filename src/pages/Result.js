@@ -28,7 +28,7 @@ export default function Result() {
         main: "#051c48",
       },
       header: {
-        main: "transparent",
+        main: "#ffffff",
       },
       icon: {
         main: "#FFFFFF",
@@ -51,25 +51,18 @@ export default function Result() {
               p: 10,
             }}
           >
-            <Grid container spacing={2}>
+            <Grid container>
               <Grid item xs={12}>
                 <Wave
                   fill="url(#gradient)"
                   sx={{
+                    position: "absolute",
                     top: 0,
                     left: 0,
                     zIndex: 0,
                   }}
+                  height={100}
                 >
-                  <defs>
-                    <linearGradient
-                      id="gradient"
-                      gradientTransform="rotate(90)"
-                    >
-                      <stop offset="10%" stopColor="#d4af37" />
-                      <stop offset="90%" stopColor="#f00" />
-                    </linearGradient>
-                  </defs>
                   <Logo
                     sx={{
                       width: "100vw",
@@ -80,6 +73,15 @@ export default function Result() {
                       zIndex: -1,
                     }}
                   />
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      gradientTransform="rotate(90)"
+                    >
+                      <stop offset="10%" stopColor="#071648" />
+                      <stop offset="90%" stopColor="#0086D1" />
+                    </linearGradient>
+                  </defs>
                 </Wave>
               </Grid>
               <Grid item xs={12}>

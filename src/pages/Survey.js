@@ -29,7 +29,7 @@ const theme = createTheme({
       main: "#051c48",
     },
     header: {
-      main: "transparent",
+      main: "#ffffff",
     },
     icon: {
       main: "#FFFFFF",

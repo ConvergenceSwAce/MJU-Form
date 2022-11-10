@@ -29,7 +29,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   "&:hover, &.Mui-focusVisible": {
     zIndex: 1,
     "& .MuiImageBackdrop-root": {
-      opacity: 0.8,
+      opacity: 0.9,
     },
     "& .MuiImageMarked-root": {
       opacity: 0,
@@ -69,7 +69,7 @@ const ImageBackdrop = styled("span")(({ theme }) => ({
   top: 0,
   bottom: 0,
   backgroundColor: theme.palette.common.black,
-  opacity: 0.6,
+  opacity: 0.8,
   transition: theme.transitions.create("opacity"),
 }));
 
@@ -114,6 +114,7 @@ export default function Article() {
                 p: 4,
                 pt: 2,
                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                fontSize: "1.5rem",
               }}
             >
               {image.title}
