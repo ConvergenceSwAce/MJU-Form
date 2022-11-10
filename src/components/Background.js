@@ -1,25 +1,22 @@
-import React from 'react';
+import { Box } from "@mui/material";
+import React from "react";
 
-export default function BackgroundVideo() {
+export default function Background() {
   return (
     <div>
-      <video
-        loop
-        autoPlay
-        muted
-        id="bg-video"
+      <Box
+        component="img"
+        src="/image/background.png"
         style={{
-          objectFit: 'cover',
-          width: '100vw',
-          height: '100vh',
-          position: 'fixed',
+          objectFit: "cover",
+          width: "100vw",
+          height: "100vh",
+          position: "fixed",
           top: 0,
           left: 0,
           zIndex: -1,
         }}
-      >
-        {/* <source src="/videos/Bg.mp4" tpye="video/mp4" /> */}
-      </video>
+      ></Box>
     </div>
   );
 }
