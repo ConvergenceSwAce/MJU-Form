@@ -23,6 +23,8 @@ import Background from "../components/Background";
 import LinearProgressWithLabel from "../components/ProgressBar";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import axios from "axios";
+import Chart from "../components/Chart";
+import faker from "faker";
 
 const dummy = [
   {
@@ -137,6 +139,9 @@ export default function Result(props) {
                   "그대는 명지明知를 밝히는 등불이어라"
                 </Typography>
                 <Grid container spacing={2} alignItems="center">
+                  <Grid item xs={12}>
+                    <Chart />
+                  </Grid>
                   <Grid item xs={2}>
                     <Typography
                       color="white"
