@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from "@emotion/react";
 import {
   Container,
   createTheme,
@@ -6,14 +6,14 @@ import {
   Paper,
   ToggleButton,
   ToggleButtonGroup,
-} from '@mui/material';
-import React from 'react';
-import { ReactComponent as Logo } from '../assets/logo.svg';
-import Header from '../components/Header';
-import Wave from 'react-wavify';
+} from "@mui/material";
+import React from "react";
+import { ReactComponent as Logo } from "../assets/logo.svg";
+import Header from "../components/Header";
+import Wave from "react-wavify";
 
 export default function Result() {
-  const [alignment, setAlignment] = React.useState('web');
+  const [alignment, setAlignment] = React.useState("web");
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -21,16 +21,16 @@ export default function Result() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#005cb8',
+        main: "#005cb8",
       },
       secondary: {
-        main: '#051c48',
+        main: "#051c48",
       },
       header: {
-        main: 'transparent',
+        main: "transparent",
       },
       icon: {
-        main: '#FFFFFF',
+        main: "#FFFFFF",
       },
     },
     typography: {
@@ -46,9 +46,37 @@ export default function Result() {
             <Grid item xs={12}>
               <Paper
                 elevation={1}
-                sx={{ justifyContent: 'center', display: 'flex' }}
+                sx={{
+                  justifyContent: "center",
+                  display: "flex",
+                  height: 600,
+                }}
               >
-                <Logo width={'50vw'}  />
+                <Wave
+                  width="auto"
+                  mask="url(#mask)"
+                  fill="#071648"
+                  paused={false}
+                  options={{
+                    height: 0,
+                    amplitude: 5,
+                    speed: 0.15,
+                    points: 20,
+                  }}
+                >
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      gradientTransform="rotate(90)"
+                    >
+                      <stop offset="0" stopColor="white" />
+                      <stop offset="0.5" stopColor="black" />
+                    </linearGradient>
+                    <mask id="mask">
+                      <Logo />
+                    </mask>
+                  </defs>
+                </Wave>
               </Paper>
             </Grid>
 
