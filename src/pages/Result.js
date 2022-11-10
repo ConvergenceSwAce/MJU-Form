@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from "@emotion/react";
 import {
   Card,
   Button,
@@ -15,15 +15,15 @@ import {
   Box,
   Stack,
   styled,
-} from '@mui/material';
-import React, { useEffect } from 'react';
-import { ReactComponent as Logo } from '../assets/logo.svg';
-import Header from '../components/Header';
-import Background from '../components/Background';
-import LinearProgressWithLabel from '../components/ProgressBar';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import axios from 'axios';
-import Chart from '../components/Chart';
+} from "@mui/material";
+import React, { useEffect } from "react";
+import { ReactComponent as Logo } from "../assets/logo.svg";
+import Header from "../components/Header";
+import Background from "../components/Background";
+import LinearProgressWithLabel from "../components/ProgressBar";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import axios from "axios";
+import Chart from "../components/Chart";
 
 const dummy = [
   {
@@ -34,28 +34,28 @@ const dummy = [
   },
   {
     id: 3,
-    comment: '아니 이건 아니지',
+    comment: "아니 이건 아니지",
     vote: 13,
   },
   {
     id: 1,
-    comment: '내 의견',
+    comment: "내 의견",
     vote: 3,
   },
   {
     id: 5,
-    comment: '명지 살려',
+    comment: "명지 살려",
     vote: 2,
   },
   {
     id: 2,
-    comment: '민수 의견',
+    comment: "민수 의견",
     vote: 0,
   },
 ];
 
 export default function Result(props) {
-  const [alignment, setAlignment] = React.useState('latest');
+  const [alignment, setAlignment] = React.useState("latest");
   const [sortedData, setSortedData] = React.useState([]);
   console.log(sortedData.length);
 
@@ -71,7 +71,7 @@ export default function Result(props) {
         setSortedData(res.data);
       })
       .catch((err) => {
-        console.log('error: ' + err.message);
+        console.log("error: " + err.message);
       });
   }, [alignment]);
 
@@ -81,19 +81,19 @@ export default function Result(props) {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#005cb8',
+        main: "#005cb8",
       },
       secondary: {
-        main: '#051c48',
+        main: "#051c48",
       },
       header: {
-        main: '#ffffff',
+        main: "#ffffff",
       },
       icon: {
-        main: '#FFFFFF',
+        main: "#FFFFFF",
       },
       btn: {
-        main: '##5AA263',
+        main: "##5AA263",
       },
     },
     typography: {
@@ -102,10 +102,10 @@ export default function Result(props) {
   });
 
   const Item = styled(Paper)(() => ({
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     padding: 10,
-    textAlign: 'center',
-    color: 'black',
+    textAlign: "center",
+    color: "black",
   }));
 
   return (
@@ -116,8 +116,8 @@ export default function Result(props) {
           <Paper
             elevation={1}
             sx={{
-              justifyContent: 'center',
-              display: 'flex',
+              justifyContent: "center",
+              display: "flex",
               p: 10,
             }}
           >
@@ -158,7 +158,7 @@ export default function Result(props) {
               </Grid>
               <Box
                 sx={{
-                  width: '100%',
+                  width: "100%",
                   mt: 2,
                   p: 2,
                 }}
@@ -197,11 +197,11 @@ export default function Result(props) {
                                     `http://${process.env.REACT_APP_BACKEND_URL}/survey/vote?id=${data.id}`
                                   )
                                   .then((res) => {
-                                    alert('투표가 완료되었습니다.');
-                                    console.log('test');
+                                    alert("투표가 완료되었습니다.");
+                                    console.log("test");
                                   })
                                   .catch((err) => {
-                                    alert('error: ' + err.message);
+                                    alert("중복된 투표입니다.");
                                   });
                               }}
                             >
