@@ -29,7 +29,7 @@ const theme = createTheme({
       main: "#051c48",
     },
     header: {
-      main: "transparent",
+      main: "#ffffff",
     },
     icon: {
       main: "#FFFFFF",
@@ -225,10 +225,10 @@ export default function Checkout() {
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="md" sx={{ mt: 10 }}>
         <Paper variant="outlined" sx={{ p: { xs: 2, md: 5 } }}>
           <Typography variant="h4" align="center">
-            명지의 등불밝히기
+            설문조사
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 3 }}>
             {steps.map((label) => (
