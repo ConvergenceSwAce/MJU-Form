@@ -85,7 +85,7 @@ export default function AddressForm(props) {
               <MenuItem value={"인문대학"}>인문대학</MenuItem>
               <MenuItem value={"자연과학대학"}>자연과학대학</MenuItem>
               <MenuItem value={"ICT융합대학"}>ICT융합대학</MenuItem>
-              <MenuItem value={"단과대구분없음"}>단과대구분없음</MenuItem>
+              <MenuItem value={"방목기초대학"}>방목기초대학</MenuItem>
             </Select>
           </FormControl>
         </Grid>
