@@ -34,9 +34,6 @@ function SumbitForm(props) {
         <Typography variant="h6" gutterBottom textAlign="center">
           의견 작성하기
         </Typography>
-        <Typography color="text.secondary" sx={{ mt: 2 }} variant="subtitle1">
-          "그대 명지를 밝히는 등불이 되어라"
-        </Typography>
         <Box component="form" sx={{ mt: 4 }}>
           {/* 내용 입력 폼 */}
           <Grid item xs={12}>
