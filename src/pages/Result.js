@@ -11,6 +11,7 @@ import React from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import Header from "../components/Header";
 import Background from "../components/Background";
+import LinearProgressWithLabel from "../components/ProgressBar";
 
 export default function Result() {
   const [alignment, setAlignment] = React.useState("web");
@@ -53,6 +54,7 @@ export default function Result() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Logo height={100} />
+                <LinearProgressWithLabel value={50} />
               </Grid>
               <Grid item xs={12}>
                 <ToggleButtonGroup
