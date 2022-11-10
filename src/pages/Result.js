@@ -11,6 +11,7 @@ import React from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import Header from "../components/Header";
 import Wave from "react-wavify";
+import Background from "../components/Background";
 
 export default function Result() {
   const [alignment, setAlignment] = React.useState("web");
@@ -41,27 +42,23 @@ export default function Result() {
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Header />
-        <Container>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Paper
-                elevation={1}
-                sx={{
-                  justifyContent: "center",
-                  display: "flex",
-                  height: 600,
-                }}
-              >
+        <Container sx={{ mt: 10 }}>
+          <Paper
+            elevation={1}
+            sx={{
+              justifyContent: "center",
+              display: "flex",
+              p: 10,
+            }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
                 <Wave
-                  width="auto"
-                  mask="url(#mask)"
-                  fill="#071648"
-                  paused={false}
-                  options={{
-                    height: 0,
-                    amplitude: 5,
-                    speed: 0.15,
-                    points: 20,
+                  fill="url(#gradient)"
+                  sx={{
+                    top: 0,
+                    left: 0,
+                    zIndex: 0,
                   }}
                 >
                   <defs>
@@ -69,33 +66,42 @@ export default function Result() {
                       id="gradient"
                       gradientTransform="rotate(90)"
                     >
-                      <stop offset="0" stopColor="white" />
-                      <stop offset="0.5" stopColor="black" />
+                      <stop offset="10%" stopColor="#d4af37" />
+                      <stop offset="90%" stopColor="#f00" />
                     </linearGradient>
-                    <mask id="mask">
-                      <Logo />
-                    </mask>
                   </defs>
+                  <Logo
+                    sx={{
+                      width: "100vw",
+                      height: "100vh",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      zIndex: -1,
+                    }}
+                  />
                 </Wave>
-              </Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <ToggleButtonGroup
+                  color="primary"
+                  value={alignment}
+                  exclusive
+                  onChange={handleChange}
+                  aria-label="Platform"
+                >
+                  <ToggleButton value="latest" selected="true">
+                    최신순
+                  </ToggleButton>
+                  <ToggleButton value="heart">공감순</ToggleButton>
+                  <ToggleButton value="oldest">오래된순</ToggleButton>
+                </ToggleButtonGroup>
+              </Grid>
             </Grid>
-
-            <Grid item xs={12}>
-              <ToggleButtonGroup
-                color="primary"
-                value={alignment}
-                exclusive
-                onChange={handleChange}
-                aria-label="Platform"
-              >
-                <ToggleButton value="latest">최신순</ToggleButton>
-                <ToggleButton value="heart">공감순</ToggleButton>
-                <ToggleButton value="oldest">오래된순</ToggleButton>
-              </ToggleButtonGroup>
-            </Grid>
-          </Grid>
+          </Paper>
         </Container>
       </ThemeProvider>
+      <Background />
     </React.Fragment>
   );
 }

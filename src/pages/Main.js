@@ -1,23 +1,23 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Container, Grid } from '@mui/material';
-import Header from '../components/Header';
-import BackgroundVideo from '../components/Background';
-import Article from '../components/Article';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Container, Grid } from "@mui/material";
+import Header from "../components/Header";
+import Background from "../components/Background";
+import Article from "../components/Article";
 
 function Main() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#005cb8',
+        main: "#005cb8",
       },
       secondary: {
-        main: '#051c48',
+        main: "#051c48",
       },
       header: {
-        main: 'transparent',
+        main: "transparent",
       },
       icon: {
-        main: '#FFFFFF',
+        main: "#FFFFFF",
       },
     },
     typography: {
@@ -34,13 +34,13 @@ function Main() {
           spacing={2}
           alignContent="center"
           sx={{
-            height: '100vh',
+            height: "100vh",
           }}
         >
           <Article />
         </Grid>
       </Container>
-      <BackgroundVideo />
+      <Background />
     </ThemeProvider>
   );
 }
