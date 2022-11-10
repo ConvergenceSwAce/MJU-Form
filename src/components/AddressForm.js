@@ -78,7 +78,7 @@ export default function AddressForm(props) {
               <MenuItem value={"건축대학"}>건축대학</MenuItem>
               <MenuItem value={"경영대학"}>경영대학</MenuItem>
               <MenuItem value={"공과대학"}>공과대학</MenuItem>
-              <MenuItem value={"미래융합대학교"}>미래융합대학교</MenuItem>
+              <MenuItem value={"미래융합대학"}>미래융합대학</MenuItem>
               <MenuItem value={"법과대학"}>법과대학</MenuItem>
               <MenuItem value={"사회과학대학"}>사회과학대학</MenuItem>
               <MenuItem value={"예술체육대학"}>예술체육대학</MenuItem>
