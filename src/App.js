@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Main from './pages/Main';
-import Result from './pages/Result';
-import Survey from './pages/Survey';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Main from "./pages/Main";
+import Result from "./pages/Result";
+import Survey from "./pages/Survey";
+import "./App.css";
 
 function App() {
   return (
