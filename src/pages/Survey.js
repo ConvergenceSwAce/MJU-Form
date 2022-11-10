@@ -54,11 +54,11 @@ export default function Checkout() {
     console.log(postData);
 
     await axios
-      .post("http://localhost:7000/sumbit", postData)
+      .post('http://localhost:7001/survey', postData)
       .then((res) => {
         Swal.fire({
-          icon: "success",
-          title: "제출 성공",
+          icon: 'success',
+          title: '제출 성공',
           showConfirmButton: false,
           timer: 1000,
         });
@@ -67,11 +67,11 @@ export default function Checkout() {
       .catch((err) => {
         console.log(err);
         Swal.fire({
-          icon: "error",
-          iconColor: "#d32f2f",
-          title: "제출 실패",
-          text: "다시 시도해주세요",
-          confirmButtonColor: "#005cb8",
+          icon: 'error',
+          iconColor: '#d32f2f',
+          title: '제출 실패',
+          text: '다시 시도해주세요',
+          confirmButtonColor: '#005cb8',
         });
       });
   }
