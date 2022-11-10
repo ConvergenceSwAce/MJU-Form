@@ -59,22 +59,13 @@ export default function Result(props) {
   const [alignment, setAlignment] = React.useState('latest');
   const [sortedData, setSortedData] = React.useState([]);
 
-  const ThumbUpPress = async () => {
-    await axios
-      .post('#')
-      .then((res) => {
-        alert('투표가 완료되었습니다.');
-        console.log('test');
-      })
-      .catch((err) => {
-        alert('error: ' + err.message);
-      });
-  };
-
   useEffect(() => {
     axios
-      .get(`http://localhost:7001/survey`, { params: { orderby: alignment }}, 
-      { withCredentials: true })
+      .get(
+        `http://localhost:7001/survey`,
+        { params: { orderby: alignment } },
+        { withCredentials: true }
+      )
       .then((res) => {
         console.log(res.data);
         setSortedData(res.data);
@@ -160,38 +151,69 @@ export default function Result(props) {
                         height: 10,
                         borderRadius: 20,
                       }}
-                      value={38}
+                      value={sortedData.length / 183}
                     />
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <ToggleButtonGroup
-                  color="primary"
-                  value={alignment}
-                  exclusive
-                  onChange={handleChange}
-                  aria-label="Platform"
-                >
-                  <ToggleButton value="latest">최신순</ToggleButton>
-                  <ToggleButton value="oldest">오래된순</ToggleButton>
-                  <ToggleButton value="vote">공감순</ToggleButton>
-                </ToggleButtonGroup>
-              </Grid>
-              <Stack spacing={4}>
-                {sortedData.map((data) => {
-                  return (
-                    <>
+              <Box
+                sx={{
+                  width: '100%',
+                  mt: 2,
+                  p: 2,
+                }}
+              >
+                <Grid item xs={12} textAlign="left">
+                  <ToggleButtonGroup
+                    color="primary"
+                    value={alignment}
+                    exclusive
+                    onChange={handleChange}
+                    aria-label="Platform"
+                  >
+                    <ToggleButton value="latest">최신순</ToggleButton>
+                    <ToggleButton value="oldest">오래된순</ToggleButton>
+                    <ToggleButton value="vote">공감순</ToggleButton>
+                  </ToggleButtonGroup>
+                </Grid>
+
+                <Stack spacing={2}>
+                  {console.log(sortedData)}
+                  {sortedData.map((data) => {
+                    return (
                       <Item>
-                        <p>{data.comment}</p>
-                        {/* <IconButton onClick={ThumbUpPress}>
-                          <ThumbUpAltIcon color="primary" />
-                        </IconButton> */}
+                        <Grid
+                          container
+                          justifyContent="center"
+                          alignItems="center"
+                          textAlign="center"
+                        >
+                          <Grid xs={10}> {data.comment}</Grid>
+                          <Grid xs={2} textAlign="right">
+                            <IconButton
+                              onClick={async () => {
+                                await axios
+                                  .get(
+                                    `http://localhost:7001/survey/vote?id=${data.id}`
+                                  )
+                                  .then((res) => {
+                                    alert('투표가 완료되었습니다.');
+                                    console.log('test');
+                                  })
+                                  .catch((err) => {
+                                    alert('error: ' + err.message);
+                                  });
+                              }}
+                            >
+                              <ThumbUpAltIcon color="primary" />
+                            </IconButton>
+                          </Grid>
+                        </Grid>
                       </Item>
-                    </>
-                  );
-                })}
-              </Stack>
+                    );
+                  })}
+                </Stack>
+              </Box>
             </Grid>
           </Paper>
         </Container>
