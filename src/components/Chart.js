@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,9 +7,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import faker from 'faker';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -24,83 +23,56 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: "top",
     },
     title: {
       display: true,
-      text: '단과대별 의견 제출 수',
+      text: "단과대별 의견 제출 현황",
+    },
+  },
+  scales: {
+    // ⑫y축에 대한 설정(Object)
+    y: {
+      // ⑬시작을 0부터 하게끔 설정(최소값이 0보다 크더라도)(boolean)
+      beginAtZero: true,
+      max: 100,
     },
   },
 };
 
-const labels = ['단과대별 투표수'];
-
-const labelss = [
-  '건축대학',
-  '경영대학',
-  '공과대학',
-  '미래융합대학',
-  '법과대학',
-  '사회과학대학',
-  '예술체육대학',
-  '인문대학',
-  '자연과학대학',
-  'ICT융합대학',
-  '단과대구분없음',
+const labels = [
+  "건축대학",
+  "경영대학",
+  "공과대학",
+  "미래융합대학",
+  "법과대학",
+  "사회과학대학",
+  "예술체육대학",
+  "인문대학",
+  "자연과학대학",
+  "ICT융합대학",
+  "방목기초대학",
 ];
 
-export const data = {
-  labels,
+const data = {
+  labels: labels,
   datasets: [
     {
-      label: '건축대학',
-      data: [10],
-      backgroundColor: 'rgba(53, 162, 235)',
-    },
-    {
-      label: '경영대학',
-      data: [15],
-      backgroundColor: 'rgba(53, 162, 23)',
-    },
-    {
-      label: '공과대학',
-      data: [7],
-      backgroundColor: 'rgba(59, 12, 23)',
-    },
-    {
-      label: '미래융합대학',
-      data: [18],
-      backgroundColor: 'rgba(3, 162, 123)',
-    },
-    {
-      label: '사회과학대학',
-      data: [25],
-      backgroundColor: 'rgba(253, 162, 23)',
-    },
-    {
-      label: '예술체육대학',
-      data: [9],
-      backgroundColor: 'rgba(53, 12, 223)',
-    },
-    {
-      label: '인문대학',
-      data: [17],
-      backgroundColor: 'rgba(123, 252, 23)',
-    },
-    {
-      label: '자연과학대학',
-      data: [20],
-      backgroundColor: 'rgba(231, 12, 23)',
-    },
-    {
-      label: 'ICT융합대학',
-      data: [40],
-      backgroundColor: 'rgba(53, 162, 23)',
-    },
-    {
-      label: '단과대구분없음',
-      data: [12],
-      backgroundColor: 'rgba(193, 182, 23)',
+      label: "단과대 별 의견 제출율",
+      data: [65, 59, 80, 81, 56, 55, 40, 30, 29, 40, 30],
+      backgroundColor: [
+        "rgba(255, 99, 132)",
+        "rgba(255, 159, 64)",
+        "rgba(255, 205, 86)",
+        "rgba(75, 192, 192)",
+        "rgba(54, 162, 235)",
+        "rgba(153, 102, 255)",
+        "rgba(21, 03, 207)",
+        "rgba(255, 992, 132)",
+        "rgba(255, 99, 64)",
+        "rgba(25, 99, 86)",
+        "rgba(201, 203, 207)",
+      ],
     },
   ],
 };
