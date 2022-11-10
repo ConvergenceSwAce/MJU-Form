@@ -46,9 +46,9 @@ export default function Checkout() {
     const postData = {
       name,
       stdId,
-      collage,
-      department,
-      content,
+      college: collage,
+      major: department,
+      comment: content,
     };
 
     console.log(postData);
@@ -245,6 +245,10 @@ export default function Checkout() {
 
     const userData = {
       name,
+      stdId,
+      collage,
+      department,
+      content,
     };
 
     //개인정보 동의 checkbox 유효성 검사
