@@ -9,6 +9,7 @@ import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   //  Menu Opne, close state
@@ -35,19 +36,18 @@ const Header = () => {
               }}
               src="/image/1.gif"
             />
-
-            <Typography
-              variant="h5"
-              style={{
-                color: '#000',
-                marginLeft: '1vw',
-                fontSize: 20,
-                fontWeight: 600,
-              }}
-            >
-              명지대학교 학사구조 통합안 관련 인식 설문조사
-            </Typography>
           </IconButton>
+          <Typography
+            variant="h5"
+            style={{
+              color: '#000',
+              marginLeft: '1vw',
+              fontSize: 20,
+              fontWeight: 600,
+            }}
+          >
+            명지대학교 학사구조 통합안 관련 인식 설문조사
+          </Typography>
         </Toolbar>
       </Container>
     </AppBar>
