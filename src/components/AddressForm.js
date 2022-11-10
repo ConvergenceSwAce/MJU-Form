@@ -96,6 +96,7 @@ export default function AddressForm(props) {
   const [getMajors, setMajors] = React.useState([]);
 
   React.useEffect(() => {
+    // 이펙트 잘 썻는진 모르겠는데 collageOfMajors에서 키를 getCollage로 해서 벨류를 받아올거임 그거 바로 setMajors에 때려도되는디 길어져서 majors에 담고 setMajors해줌 getMajors하면 키에대한 리스트만 나옴 밑에서 map으로 반복할때 바로 쓸려고 벨류 리스트로했음
     console.log(collageOfMajors[getCollage]);
     let majors = collageOfMajors[getCollage];
     setMajors(majors);
@@ -153,6 +154,7 @@ export default function AddressForm(props) {
           <FormHelperTexts>{props.stdIdError}</FormHelperTexts>
         </Grid>
         <Grid item xs={12}>
+        {/* 단과대 셀렉터 */}
           <FormControl fullWidth>
             <InputLabel id="collage-select-label">단과대학</InputLabel>
             <Select
@@ -178,6 +180,7 @@ export default function AddressForm(props) {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
+        {/* 학과 셀렉터  */}
           <FormControl fullWidth>
             <InputLabel id="department-select-label">학과・학부</InputLabel>
             <Select
@@ -188,6 +191,7 @@ export default function AddressForm(props) {
               onChange={handleChangeDepartment}
               error={props.departmentError !== '' || false}
             >
+            {/* 단과대 선택된 데이터를 map함수로 뿌림 */}
               {console.log('test: ', getMajors)}
               {getMajors.map((item, index) => {
                 return (
