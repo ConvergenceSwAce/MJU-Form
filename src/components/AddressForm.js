@@ -180,7 +180,7 @@ export default function AddressForm(props) {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-        {/* 학과 셀렉터 */}
+        {/* 학과 셀렉터  */}
           <FormControl fullWidth>
             <InputLabel id="department-select-label">학과・학부</InputLabel>
             <Select
