@@ -88,6 +88,7 @@ export default function AddressForm(props) {
               <MenuItem value={"방목기초대학"}>방목기초대학</MenuItem>
             </Select>
           </FormControl>
+          <FormHelperTexts>{props.collageError}</FormHelperTexts>
         </Grid>
         <Grid item xs={12}>
           {/* 학과 셀렉터  */}
@@ -115,6 +116,7 @@ export default function AddressForm(props) {
               )}
             </Select>
           </FormControl>
+          <FormHelperTexts>{props.departmentError}</FormHelperTexts>
         </Grid>
 
         <Grid item xs={12}>

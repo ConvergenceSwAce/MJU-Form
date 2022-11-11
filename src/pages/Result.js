@@ -1,17 +1,13 @@
 import { ThemeProvider } from "@emotion/react";
 import {
-  Card,
-  Button,
   Container,
   createTheme,
   Grid,
   IconButton,
-  ListItemButton,
   Paper,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
-  CardContent,
   Box,
   Stack,
   styled,
@@ -24,40 +20,11 @@ import LinearProgressWithLabel from "../components/ProgressBar";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import axios from "axios";
 import Chart from "../components/Chart";
+import Swal from "sweetalert2";
 
-const dummy = [
-  {
-    id: 4,
-    comment:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    vote: 30,
-  },
-  {
-    id: 3,
-    comment: "아니 이건 아니지",
-    vote: 13,
-  },
-  {
-    id: 1,
-    comment: "내 의견",
-    vote: 3,
-  },
-  {
-    id: 5,
-    comment: "명지 살려",
-    vote: 2,
-  },
-  {
-    id: 2,
-    comment: "민수 의견",
-    vote: 0,
-  },
-];
-
-export default function Result(props) {
+export default function Result() {
   const [alignment, setAlignment] = useState("latest");
   const [sortedData, setSortedData] = useState([]);
-  console.log(sortedData.length);
   const [chartData, setChartData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   useEffect(() => {
@@ -68,24 +35,18 @@ export default function Result(props) {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
         setSortedData(res.data);
       })
-      .catch((err) => {
-        console.log("error: " + err.message);
-      });
+      .catch((err) => {});
   }, [alignment]);
 
   useEffect(() => {
     axios
       .get(`http://${process.env.REACT_APP_BACKEND_URL}/total`)
       .then((res) => {
-        console.log(res.data);
         setChartData(res.data);
       })
-      .catch((err) => {
-        console.log("error: " + err.message);
-      });
+      .catch((err) => {});
   }, []);
 
   const handleChange = (event, newAlignment) => {
@@ -191,7 +152,6 @@ export default function Result(props) {
                 </Grid>
 
                 <Stack spacing={2}>
-                  {console.log(sortedData)}
                   {sortedData.map((data) => {
                     return (
                       <Item>
@@ -210,11 +170,21 @@ export default function Result(props) {
                                     `http://${process.env.REACT_APP_BACKEND_URL}/survey/vote?id=${data.id}`
                                   )
                                   .then((res) => {
-                                    alert("투표가 완료되었습니다.");
-                                    console.log("test");
+                                    Swal.fire({
+                                      icon: "success",
+                                      title: "투표 성공",
+                                      showConfirmButton: false,
+                                      timer: 1000,
+                                    });
                                   })
                                   .catch((err) => {
-                                    alert("중복된 투표입니다.");
+                                    Swal.fire({
+                                      icon: "error",
+                                      iconColor: "#d32f2f",
+                                      title: "투표 실패",
+                                      text: "다시 시도해주세요",
+                                      confirmButtonColor: "#005cb8",
+                                    });
                                   });
                               }}
                             >
