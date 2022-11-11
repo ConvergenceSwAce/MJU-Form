@@ -16,7 +16,7 @@ import {
   Stack,
   styled,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import Header from "../components/Header";
 import Background from "../components/Background";
@@ -55,9 +55,10 @@ const dummy = [
 ];
 
 export default function Result(props) {
-  const [alignment, setAlignment] = React.useState("latest");
-  const [sortedData, setSortedData] = React.useState([]);
+  const [alignment, setAlignment] = useState("latest");
+  const [sortedData, setSortedData] = useState([]);
   console.log(sortedData.length);
+  const [chartData, setChartData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   useEffect(() => {
     axios
@@ -74,6 +75,18 @@ export default function Result(props) {
         console.log("error: " + err.message);
       });
   }, [alignment]);
+
+  useEffect(() => {
+    axios
+      .get(`http://${process.env.REACT_APP_BACKEND_URL}/total`)
+      .then((res) => {
+        console.log(res.data);
+        setChartData(res.data);
+      })
+      .catch((err) => {
+        console.log("error: " + err.message);
+      });
+  }, []);
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -133,7 +146,7 @@ export default function Result(props) {
                 </Typography>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item xs={12}>
-                    <Chart />
+                    <Chart chartData={chartData} setChartData={chartData} />
                   </Grid>
                   <Grid item xs={2}>
                     <Typography

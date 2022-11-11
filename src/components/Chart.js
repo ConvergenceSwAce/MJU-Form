@@ -55,15 +55,14 @@ const labels = [
   '방목기초대학',
 ];
 
-export default function Chart() {
-  const [chartData, setChartData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+export default function Chart(props) {
 
   const data = {
     labels: labels,
     datasets: [
       {
         label: '단과대 별 의견 제출율',
-        data: chartData,
+        data: props.chartData,
         backgroundColor: [
           'rgba(255, 99, 132)',
           'rgba(255, 159, 64)',
@@ -81,17 +80,6 @@ export default function Chart() {
     ],
   };
 
-  useEffect(() => {
-    axios
-      .get(`http://${process.env.REACT_APP_BACKEND_URL}/total`)
-      .then((res) => {
-        console.log(res.data);
-        setChartData(res.data);
-      })
-      .catch((err) => {
-        console.log('error: ' + err.message);
-      });
-  }, [chartData]);
 
   return <Bar options={options} data={data} />;
 }
