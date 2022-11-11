@@ -1,1 +1,1 @@
-# MJU_form
+# http://명지대.kr
