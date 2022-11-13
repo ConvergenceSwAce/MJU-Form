@@ -30,7 +30,7 @@ export default function Result() {
   useEffect(() => {
     axios
       .get(
-        `http://${process.env.REACT_APP_BACKEND_URL}/survey`,
+        `http://localhost:7001/survey`,
         { params: { orderby: alignment } },
         { withCredentials: true }
       )
@@ -77,7 +77,9 @@ export default function Result() {
 
   const Item = styled(Paper)(() => ({
     backgroundColor: "#ffffff",
-    padding: 10,
+    padding: 20,
+    paddingLeft: '1.3rem',
+    paddingRight: '0.4rem',
     textAlign: "center",
     color: "black",
   }));
@@ -95,7 +97,7 @@ export default function Result() {
               p: 10,
             }}
           >
-            <Grid container spacing={2}>
+            <Grid container spacing={2} minWidth={280}>
               <Grid item xs={12}>
                 <Logo height={100} />
                 <Typography
@@ -107,14 +109,14 @@ export default function Result() {
                 </Typography>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item xs={12}>
-                    <Chart chartData={chartData} setChartData={chartData} />
+                    <Chart chartData={chartData} setChartData={chartData}/>
                   </Grid>
                   <Grid item xs={2}>
                     <Typography
                       color="white"
                       variant="subtitle1"
                       bgcolor="secondary.main"
-                      borderRadius={30}
+                      borderRadius={20}
                     >
                       전체 참여율
                     </Typography>
@@ -134,10 +136,11 @@ export default function Result() {
                 sx={{
                   width: "100%",
                   mt: 2,
-                  p: 2,
+                  ml: 1,
+                  minWidth: 280,
                 }}
               >
-                <Grid item xs={12} textAlign="left">
+                <Grid item xs={12} textAlign="center" marginBottom={4}>
                   <ToggleButtonGroup
                     color="primary"
                     value={alignment}
@@ -161,8 +164,8 @@ export default function Result() {
                           alignItems="center"
                           textAlign="center"
                         >
-                          <Grid xs={10}> {data.comment}</Grid>
-                          <Grid xs={2} textAlign="right">
+                          <Grid xs={10} textAlign="left"> {data.comment.split('\n').map((line) => <Typography variant="body1" padd>{line}</Typography>)}</Grid>
+                          <Grid xs={2} textAlign="center">
                             <IconButton
                               onClick={async () => {
                                 await axios
@@ -187,8 +190,11 @@ export default function Result() {
                                     });
                                   });
                               }}
+                              sx={{
+                                p: 0,
+                              }}
                             >
-                              <ThumbUpAltIcon color="primary" />
+                              <ThumbUpAltIcon color="primary"/>
                             </IconButton>
                           </Grid>
                         </Grid>
