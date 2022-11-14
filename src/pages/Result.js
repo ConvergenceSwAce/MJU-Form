@@ -78,8 +78,8 @@ export default function Result() {
   const Item = styled(Paper)(() => ({
     backgroundColor: "#ffffff",
     padding: 20,
-    paddingLeft: '1.3rem',
-    paddingRight: '0.4rem',
+    paddingLeft: "1.3rem",
+    paddingRight: "0.4rem",
     textAlign: "center",
     color: "black",
   }));
@@ -109,7 +109,7 @@ export default function Result() {
                 </Typography>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item xs={12}>
-                    <Chart chartData={chartData} setChartData={chartData}/>
+                    <Chart chartData={chartData} setChartData={chartData} />
                   </Grid>
                   <Grid item xs={2}>
                     <Typography
@@ -127,7 +127,7 @@ export default function Result() {
                         height: 10,
                         borderRadius: 20,
                       }}
-                      value={sortedData.length / 183}
+                      value={sortedData.length / 99}
                     />
                   </Grid>
                 </Grid>
@@ -164,7 +164,14 @@ export default function Result() {
                           alignItems="center"
                           textAlign="center"
                         >
-                          <Grid xs={10} textAlign="left"> {data.comment.split('\n').map((line) => <Typography variant="body1" padd>{line}</Typography>)}</Grid>
+                          <Grid xs={10} textAlign="left">
+                            {" "}
+                            {data.comment.split("\n").map((line) => (
+                              <Typography variant="body1" padd>
+                                {line}
+                              </Typography>
+                            ))}
+                          </Grid>
                           <Grid xs={2} textAlign="center">
                             <IconButton
                               onClick={async () => {
@@ -194,7 +201,7 @@ export default function Result() {
                                 p: 0,
                               }}
                             >
-                              <ThumbUpAltIcon color="primary"/>
+                              <ThumbUpAltIcon color="primary" />
                             </IconButton>
                           </Grid>
                         </Grid>
