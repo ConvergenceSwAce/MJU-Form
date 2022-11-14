@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,7 +27,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "단과대별 의견 제출 현황",
+      text: "인문캠퍼스 단과대별 의견 제출 현황",
     },
   },
   scales: {
@@ -40,15 +40,11 @@ export const options = {
 };
 
 const labels = [
-  "건축대학",
   "경영대학",
-  "공과대학",
   "미래융합대학",
   "법과대학",
   "사회과학대학",
-  "예술체육대학",
   "인문대학",
-  "자연과학대학",
   "ICT융합대학",
   "방목기초대학",
 ];
@@ -67,10 +63,6 @@ export default function Chart(props) {
           "rgba(75, 192, 192)",
           "rgba(54, 162, 235)",
           "rgba(153, 102, 255)",
-          "rgba(21, 03, 207)",
-          "rgba(255, 992, 132)",
-          "rgba(255, 99, 64)",
-          "rgba(25, 99, 86)",
           "rgba(201, 203, 207)",
         ],
       },

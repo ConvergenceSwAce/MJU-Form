@@ -33,6 +33,9 @@ export default function AddressForm(props) {
       <Typography variant="h6" gutterBottom textAlign="center">
         개인정보 입력
       </Typography>
+      <Typography variant="h8" gutterBottom textAlign="center">
+        자연캠퍼스 학우분들은 추후 올라오는 총학생회 설문조사에 참여해주세요.
+      </Typography>
       <Grid container spacing={2}>
         {/* 이름 입력 폼 */}
         <Grid item xs={6} md={6}>
@@ -75,15 +78,11 @@ export default function AddressForm(props) {
               onChange={handleChangeCollage}
               error={props.collageError !== "" || false}
             >
-              <MenuItem value={"건축대학"}>건축대학</MenuItem>
               <MenuItem value={"경영대학"}>경영대학</MenuItem>
-              <MenuItem value={"공과대학"}>공과대학</MenuItem>
               <MenuItem value={"미래융합대학"}>미래융합대학</MenuItem>
               <MenuItem value={"법과대학"}>법과대학</MenuItem>
               <MenuItem value={"사회과학대학"}>사회과학대학</MenuItem>
-              <MenuItem value={"예술체육대학"}>예술체육대학</MenuItem>
               <MenuItem value={"인문대학"}>인문대학</MenuItem>
-              <MenuItem value={"자연과학대학"}>자연과학대학</MenuItem>
               <MenuItem value={"ICT융합대학"}>ICT융합대학</MenuItem>
               <MenuItem value={"방목기초대학"}>방목기초대학</MenuItem>
             </Select>

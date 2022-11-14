@@ -6,16 +6,20 @@ import Typography from "@mui/material/Typography";
 
 const images = [
   {
-    url: "/images/court.jpg",
     title: "설문 참여",
-    width: "35%",
+    width: "30%",
     redirect: "/survey",
   },
   {
-    url: "/images/field.jpg",
     title: "설문 결과",
-    width: "35%",
+    width: "30%",
     redirect: "/result",
+  },
+  {
+    title: "학사구조 통합 설명회 자료",
+    width: "30%",
+    redirect:
+      "https://mju.ac.kr/mj/8646/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGbWolMkYxMzEyJTJGMTk0Mjg4JTJGYXJ0Y2xWaWV3LmRvJTNGcGFnZSUzRDElMjZzcmNoQ29sdW1uJTNEJTI2c3JjaFdyZCUzRCUyNmJic0NsU2VxJTNEJTI2YmJzT3BlbldyZFNlcSUzRCUyNnJnc0JnbmRlU3RyJTNEJTI2cmdzRW5kZGVTdHIlM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZpc1ZpZXclM0R0cnV",
   },
 ];
 
