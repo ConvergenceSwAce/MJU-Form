@@ -49,6 +49,9 @@ function SumbitForm(props) {
               value={props.content}
             />
           </Grid>
+          <Box sx={{ textAlign: "right" }}>
+            <Typography variant="h8">{props.content.length}/1000</Typography>
+          </Box>
         </Box>
       </Box>
     </ThemeProvider>
