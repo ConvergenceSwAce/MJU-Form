@@ -30,7 +30,7 @@ export default function Result() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:7001/survey`,
+        `http://${process.env.REACT_APP_BACKEND_URL}/survey`,
         { params: { orderby: alignment } },
         { withCredentials: true }
       )
